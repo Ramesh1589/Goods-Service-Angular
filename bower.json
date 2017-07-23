@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/kiranuidev/AngularDec-8AM",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.1",
+    "font-awesome": "^4.7.0",
+    "underscore": "^1.8.3",
+    "angular-bootstrap": "^2.5.0"
+  }
+}

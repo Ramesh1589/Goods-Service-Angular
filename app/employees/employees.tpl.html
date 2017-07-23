@@ -1,0 +1,32 @@
+<div ng-controller="employeesCtrl as emp">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>First Name</th>
+                        <th>Gender</th>
+                        <th>Age </th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="item in emp.paginatedEmployees">
+                    <td> {{item.index}} </td>
+                    <td> {{item.name}} </td>
+                    <td> {{item.gender}} </td>
+                    <td> {{item.age}} </td>
+                    <td> {{item.address}} </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <ul uib-pagination total-items="emp.paginate.totalEmployeeCount" 
+            ng-model="emp.paginate.currentPage" 
+            max-size="emp.paginate.maxSize"
+            class="pagination-sm" boundary-link-numbers="true" 
+            rotate="false" ng-click="emp.loadPaginatedEmployees()">
+        </ul>
+    </div>
+</div>

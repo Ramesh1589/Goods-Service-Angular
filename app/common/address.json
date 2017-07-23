@@ -1,0 +1,18 @@
+{
+    "firstname": "Shaym",
+    "lastname": "B",
+    "address": {
+        "country": {
+            "code": "IN",
+            "name": "India"
+        }
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "pincode": "500080"
+    }
+}
+{
+    "username":"kiran",
+    "postdata":"Welcome to mongodb",
+    "like":[{"username":"ravi"},{"username":"swathy"}],
+}

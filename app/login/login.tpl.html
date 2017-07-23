@@ -1,0 +1,31 @@
+<div ng-controller="loginCtrl">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-5">
+                <input type="text"
+                       ng-model="asyncSelected" 
+                       
+                       placeholder="Countries loaded via $http" 
+                      
+                       uib-typeahead="country.name for countries in getCountries($viewValue)" typeahead-loading="lodingCountries" typeahead-no-results="noResults" class="form-control">
+                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                <div ng-show="noResults">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-2">User Name</label>
+            <div class="col-xs-10">
+                <input type="text" ng-model="lc.user.username" class="form-control" placeholder="User Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2">Password</label>
+            <div class="col-xs-10">
+                <input type="text" ng-model="lc.user.password" class="form-control" placeholder="User Name">
+            </div>
+        </div>
+    </form>
+</div>

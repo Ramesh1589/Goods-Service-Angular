@@ -1,0 +1,105 @@
+<form name="registerForm" class="form-horizontal" ng-controller="registerCtrl as rc">
+    <div class="form-group">
+        <label class="control-label col-xs-2">User Name</label>
+        <div class="col-xs-10">
+            <input type="text" ng-model="rc.user.userName" class="form-control" name="username" placeholder="user Name" checkuser>
+            <p ng-show="registerForm.username.$error.checkuser">username already exists.</p>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-2">First Name</label>
+        <div class="col-xs-10">
+            <input type="text" ng-model="rc.user.firstName" class="form-control" name="firstName" placeholder="First Name" ng-required="true" ng-pattern="/^[a-zA-Z \s]+$/">
+            <p ng-show="registerForm.firstName.$error.required && registerForm.firstName.$dirty">First Name required.</p>
+            <p ng-show="registerForm.firstName.$error.pattern">First Name should contain alphabets only.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-2">Phone</label>
+        <div class="col-xs-10">
+            <input type="text" cm-numbers-only maxnumbers="10" ng-model="rc.user.phoneNumber" name="phone" class="form-control" ng-required="true" ng-minlength="10" ng-maxlength="10" ; placeholder="Phone Number">
+            <p ng-show="registerForm.phone.$error.required">Phone number required</p>
+            <p ng-show="registerForm.phone.$error.minlength">Phone number should 10 digits</p>
+            <p ng-show="registerForm.phone.$error.maxlength">Phone number should 10 digits</p>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label col-xs-2">Date of birth</label>
+        <div class="col-xs-10">
+            <input type="text" cm-date-picker 
+            mindate={{rc.DobRange.mindate}} 
+            maxdate={{rc.DobRange.maxdate}} 
+            ng-model="rc.user.DOB" class="form-control" placeholder="Date Of Birth">
+        </div>
+    </div>-->
+    <div class="form-group">
+         <label class="control-label col-xs-2">Date of birth</label>
+          <p class="input-group">
+          <input type="text" class="form-control" 
+          uib-datepicker-popup="{{rc.dob.format}}" 
+          ng-model="rc.user.DOB" is-open="rc.dob.popup1.opened" 
+          datepicker-options="rc.dob.dateOptions" 
+          ng-required="true" 
+          close-text="Close" 
+           />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="rc.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-2">Date of Reservation</label>
+        <div class="col-xs-10">
+            <input type="text" cm-date-picker mindate={{rc.DateofReservationRange.mindate}} maxdate={{rc.DateofReservationRange.maxdate}} ng-model="rc.user.DateOfReservation" class="form-control" placeholder="Date Of Reservation">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-2">Phone</label>
+        <div class="col-xs-10">
+            <input type="text" cm-numbers-only maxnumbers="6" ng-model="rc.user.pincode" class="form-control" placeholder="Pincode">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-2">Country</label>
+        <div class="col-xs-10">
+            <select class="form-control" ng-model="rc.selectedCountry" ng-options="country.code +'-'+country.name for country in rc.countries">
+                <option value="">Please Select</option>
+            </select>{{rc.selectedCountry}}
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="control-label col-xs-2">Help Line</label>
+        <div class="col-xs-10">
+           {{rc.helpLineNumber|phoneFormatter:rc.selectedCountry.code:true }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-2">Gender</label>
+        <div class="col-xs-10">
+            <input type="radio" ng-model="rc.user.gender" value="M" name="gender" />Male
+            <input type="radio" ng-model="rc.user.gender" value="F" name="gender" />Female
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-2">Password</label>
+        <div class="col-xs-10">
+            <input type="password" class="form-control" placeholder="Password" ng-model="rc.user.password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="rc.user.agree"> I Agree Tems</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button ng-disabled="registerForm.$invalid" type="submit" ng-click="rc.register()" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+    {{rc.user}}
+</form>
